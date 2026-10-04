@@ -114,21 +114,10 @@ $ IGNORE_VERSION_SKIP=true CI=true bundle exec rake test:func:android
     opts = {
       capabilities: { # Append capabilities
         platformName: 'ios',
-        platformVersion: '15.8.3',
+        platformVersion: '26.0',
         deviceName: 'iPhone 17',
         # app: '/path/to/MyiOS.app',  # Without 'app' capability, an appium session starts with the home screen
-        automationName: 'XCUITest',
-        # "appium:bundleId":"com.apple.mobilesafari",
-        # "usePreinstalledWDA": true,
-        useNewWDA: false,
-        browserName: 'Safari',
-        # "webDriverAgentUrl": "http://192.168.4.47:8100",
-        "udid": "00008020-000E5CDA0A23002E",
-        'xcodeOrgId': '47PCFA586Q',
-        'xcodeSigningId': 'iPhone Developer',
-        'updatedWDABundleId': 'com.kazucocoa.wda',
-        allowProvisioningDeviceRegistration: true,
-        # 'appium:skipLogCapture': true
+        automationName: 'XCUITest'
       },
       appium_lib: {
         wait: 30
@@ -198,10 +187,10 @@ class CustomListener < ::Selenium::WebDriver::Support::AbstractEventListener
 end
 capabilities: {
   platformName: :ios,
-  platformVersion: '11.0',
-  deviceName: 'iPhone Simulator',
+  platformVersion: '26',
+  deviceName: 'iPhone',
   automationName: 'XCUITest',
-  app: '/path/to/MyiOS.app'
+  browser: 'safari'
 }
 appium_lib: {
   listener: CustomListener.new
@@ -215,12 +204,10 @@ appium_lib: {
     - https://android.googlesource.com/platform/development/+/master/samples/ApiDemos
 
 # Release
-Use [appium_thor](https://github.com/appium/appium_thor) to release this gem.
+Releases are prepared automatically by Release Please. Review and merge the release
+PR; GitHub Actions then validates and publishes the gem using RubyGems Trusted
+Publishing. See [RELEASING.md](RELEASING.md) for setup, version overrides, and recovery.
 
-```bash
-$ thor bump # bumpy,
-$ thor release
-```
 
 # Contribution
 1. Fork it ( https://github.com/appium/ruby_lib_core/fork )
